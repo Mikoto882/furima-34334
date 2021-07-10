@@ -29,15 +29,18 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column                | Type   | Options     |
-| --------------------- | ------ | ----------- |
-| email                 | string | null: false |
-| password              | string | null: false |
-| password_confirmation | string | null: false |
-| name                  | string | null: false |
-| telephone             | string | null: false |
-| address               | text   | null: false |
-| nickname              | string | null: false |
+| Column             | Type        | Options       |
+| ------------------ | ----------- | ------------- |
+| email              | string      | unique: false |
+| encrypted_password | string      | null: false   |
+| last_name          | string      | null: false   |
+| first_name         | string      | null: false   |
+| last_name_read     | string      | null: false   |
+| first_name_read    | string      | null: false   |
+| birth_year         | active_hash | null: false   |
+| birth_month        | active_hash | null: false   |
+| birth_day          | active_hash | null: false   |
+| nickname           | string      | null: false   |
 
 ### Association
 
@@ -46,11 +49,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column  | Type       | Option      |
-| ------- | ---------- | ----------- |
-| title   | text       | null: false |
-| comment | text       | null: false |
-| user    | references |             |
+| Column         | Type        | Option                         |
+| -------------- | ----------- | ------------------------------ |
+| title          | string      | null: false                    |
+| comment        | text        | null: false                    |
+| item_status    | active_hash | null: false                    |
+| delivery_cover | active_hash | null: false                    |
+| ship_area      | active_hash | null: false                    |
+| ship_day       | active_hash | null: false                    |
+| category       | active_hash | null: false                    |
+| money          | text        | null: false                    |
+| user           | references  | null: false, foreign_key: true |
 
 ### Association
 
@@ -59,13 +68,23 @@ Things you may want to cover:
 
 ## buys テーブル
 
-| Column   | Type   | Option      |
-| -------- | ------ | ----------- |
-| number   | string | null: false |
-| deadline | string | null: false |
-| security | string | null: false |
+| Column   | Type       | Option                         |
+| -------- | ---------- | ------------------------------ |
+| number   | string     | null: false                    |
+| deadline | string     | null: false                    |
+| security | string     | null: false                    |
+| user     | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
 - belongs_to :items
+- has_one :addresses
+
+## addresses テーブル
+
+| Column      | Type   | Option      |
+| ----------- | ------ | ----------- |
+| post_number | string | null: false |
+| address     | text   | null: false |
+| tele_number | string | null: false |
