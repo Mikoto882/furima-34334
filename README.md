@@ -79,15 +79,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column             | Type   | Option                         |
-| ------------------ | ------ | ------------------------------ |
-| post_number        | string | null: false                    |
-| address_prefecture | text   | null: false                    |
-| address_city       | text   | null: false                    |
-| address_no         | text   | null: false                    |
-| address_build      | text   | null: false                    |
-| tele_number        | string | null: false                    |
-| buy_name           | string | null: false, foreign_key: true |
+| Column                | Type       | Option                         |
+| --------------------- | ---------- | ------------------------------ |
+| post_number           | string     | null: false                    |
+| address_prefecture_id | integer    | null: false                    |
+| address_city          | string     | null: false                    |
+| address_no            | string     | null: false                    |
+| address_build         | string     | null: false                    |
+| tele_number           | string     | null: false                    |
+| user                  | references | null: false, foreign_key: true |
 
 ### Association
 
