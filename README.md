@@ -47,17 +47,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Column            | Type       | Option                         |
-| ----------------- | ---------- | ------------------------------ |
-| title             | string     | null: false                    |
-| comment           | text       | null: false                    |
-| item_status_id    | integer    | null: false                    |
-| delivery_cover_id | integer    | null: false                    |
-| ship_area_id      | integer    | null: false                    |
-| ship_day_id       | integer    | null: false                    |
-| category_id       | integer    | null: false                    |
-| money_id          | integer    | null: false                    |
-| user              | references | null: false, foreign_key: true |
+| Column            | Type       | Option            |
+| ----------------- | ---------- | ----------------- |
+| title             | string     | null: false       |
+| description       | text       | null: false       |
+| item_status_id    | integer    | null: false       |
+| delivery_cover_id | integer    | null: false       |
+| ship_area_id      | integer    | null: false       |
+| ship_day_id       | integer    | null: false       |
+| category_id       | integer    | null: false       |
+| money             | integer    | null: false       |
+| user              | references | foreign_key: true |
 
 ### Association
 
@@ -66,10 +66,10 @@ Things you may want to cover:
 
 ## buys テーブル
 
-| Column | Type       | Option                         |
-| ------ | ---------- | ------------------------------ |
-| item   | references | null: false, foreign_key: true |
-| user   | references | null: false, foreign_key: true |
+| Column | Type       | Option            |
+| ------ | ---------- | ----------------- |
+| item   | references | foreign_key: true |
+| user   | references | foreign_key: true |
 
 ### Association
 
@@ -79,15 +79,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column                | Type       | Option                         |
-| --------------------- | ---------- | ------------------------------ |
-| post_number           | string     | null: false                    |
-| address_prefecture_id | integer    | null: false                    |
-| address_city          | string     | null: false                    |
-| address_no            | string     | null: false                    |
-| address_build         | string     | null: false                    |
-| tele_number           | string     | null: false                    |
-| user                  | references | null: false, foreign_key: true |
+| Column        | Type       | Option            |
+| ------------- | ---------- | ----------------- |
+| post_number   | string     | null: false       |
+| ship_area_id  | integer    | null: false       |
+| address_city  | string     | null: false       |
+| address_no    | string     | null: false       |
+| address_build | string     |                   |
+| tele_number   | string     | null: false       |
+| buy           | references | foreign_key: true |
 
 ### Association
 
