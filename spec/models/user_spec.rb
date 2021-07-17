@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it "パスワードは、6文字以上が存在すれば登録できる" do
-        @user.password = '000000'
-        @user.password_confirmation = '000000'
+        @user.password = '123abc'
+        @user.password_confirmation = '123abc'
         expect(@user).to be_valid
       end
       it "パスワードは、半角英数字混合での入力が必須であること（半角英数字が混合されていれば、登録が可能なこと）" do
@@ -85,17 +85,17 @@ RSpec.describe User, type: :model do
       it "パスワードは半角英語のみは登録できない" do
         @user.password = 'abcdef'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it "パスワードは数字のみは登録できない" do
         @user.password = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it "パスワードは全角英数混合は登録できない" do
         @user.password = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
       it "パスワードは６文字以上でないと登録できないこと" do
         @user.password = '00000'
@@ -141,12 +141,12 @@ RSpec.describe User, type: :model do
       it "ユーザー本名（名字）のフリガナは全角（カタカナ）以外は登録できない" do
         @user.last_name_read = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name read is invalid. Input full-width katakana characters.")
+        expect(@user.errors.full_messages).to include("Last name read is invalid")
       end
       it "ユーザー本名（名前）のフリガナは全角（カタカナ）以外は登録できない" do
         @user.first_name_read = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name read is invalid. Input full-width katakana characters.")
+        expect(@user.errors.full_messages).to include("First name read is invalid")
       end
       it "生年月日が必須であること" do
         @user.birthday = ''
