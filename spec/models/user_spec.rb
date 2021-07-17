@@ -85,17 +85,17 @@ RSpec.describe User, type: :model do
       it "パスワードは半角英語のみは登録できない" do
         @user.password = 'abcdef'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
       it "パスワードは数字のみは登録できない" do
         @user.password = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
       it "パスワードは全角英数混合は登録できない" do
         @user.password = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
       it "パスワードは６文字以上でないと登録できないこと" do
         @user.password = '00000'
@@ -141,12 +141,12 @@ RSpec.describe User, type: :model do
       it "ユーザー本名（名字）のフリガナは全角（カタカナ）以外は登録できない" do
         @user.last_name_read = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name read is invalid")
+        expect(@user.errors.full_messages).to include("Last name read Input full-width katakana characters.")
       end
       it "ユーザー本名（名前）のフリガナは全角（カタカナ）以外は登録できない" do
         @user.first_name_read = 'ひらab12'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name read is invalid")
+        expect(@user.errors.full_messages).to include("First name read Input full-width katakana characters.")
       end
       it "生年月日が必須であること" do
         @user.birthday = ''
