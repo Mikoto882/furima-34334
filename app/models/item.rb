@@ -1,2 +1,2 @@
-class Item < ApplicationRecord
+class Item < ActiveHash::Base
 end
