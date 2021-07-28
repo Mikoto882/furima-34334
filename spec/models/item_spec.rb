@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    user = FactoryBot.create(:user)
+    
     @item = FactoryBot.build(:item)
     
   end
@@ -126,9 +126,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Money is invalid")
       end
       it "ユーザー情報がない場合は登録できないこと" do
-        @item.user_id = nil
+        @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User can't be blank")
+        expect(@item.errors.full_messages).to include("User must exist")
       end
     end
   end

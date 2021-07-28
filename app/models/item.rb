@@ -3,11 +3,13 @@ class Item < ApplicationRecord
     validates :image
     validates :title
     validates :description
-    validates :item_status_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :delivery_cover_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :ship_area_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :ship_day_id, numericality: { other_than: 1 , message: "can't be blank"}
-    validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
+    with_options numericality: {other_than: 1, message: "can't be blank"} do
+      validates :item_status_id
+      validates :delivery_cover_id
+      validates :ship_area_id
+      validates :ship_day_id
+      validates :category_id
+    end
     validates :money, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 10000000, message: 'is invalid'}
   end
 
