@@ -9,7 +9,6 @@ class Item < ApplicationRecord
     validates :ship_day_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :category_id, numericality: { other_than: 1 , message: "can't be blank"}
     validates :money, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 10000000, message: 'is invalid'}
-    validates :user_id
   end
 
   belongs_to :user
