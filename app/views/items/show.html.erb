@@ -25,7 +25,6 @@
       </span>
     </div>
 
-    <%# 商品が出品されている場合は以下を表示する %>
     <% if user_signed_in? %>
 
       <% if current_user.id == @item.user_id %>
@@ -42,7 +41,6 @@
 
 
     <% end %>
-    <%# //商品が出品されている場合は以下を表示する %>
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
