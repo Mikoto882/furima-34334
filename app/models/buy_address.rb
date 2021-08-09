@@ -1,5 +1,5 @@
 class BuyAddress
-  includ ActiveModel::Model
+  include ActiveModel::Model
   attr_accessor :post_number, :ship_area, :address_city, :address_no, :address_build, :tele_number, :buy_id, :item_id, :user_id
 
   with_options presence: true do
@@ -12,7 +12,6 @@ class BuyAddress
     validates :item_id
     validates :user_id
   end
-  validates :address_build
 
   def save
     buy = Buy.create(item_id: item_id, user_id: user_id)
