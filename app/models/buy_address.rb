@@ -4,11 +4,10 @@ class BuyAddress
 
   with_options presence: true do
     validates :post_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :ship_area_id
+    validates :ship_area_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :address_city
     validates :address_no
     validates :tele_number, length: {maximum: 11}
-    validates :buy_id
     validates :item_id
     validates :user_id
   end
