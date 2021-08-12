@@ -19,7 +19,7 @@ class BuysController < ApplicationController
   private
 
   def buy_params
-    params.permit(:post_number, :ship_area_id, :address_city, :address_no, :address_build, :tele_number, :item_id).merge(user_id: current_user.id)
+    params.permit(:post_number, :ship_area_id, :address_city, :address_no, :address_build, :tele_number, :item_id).merge(user_id: current_user.id, token: params[:token])
   end
 
 end
