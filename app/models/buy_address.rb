@@ -10,6 +10,7 @@ class BuyAddress
     validates :tele_number, length: {maximum: 11}
     validates :item_id
     validates :user_id
+    validates :token
   end
 
   def save
