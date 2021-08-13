@@ -1,5 +1,7 @@
 class BuysController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_buy, only:[:index, :create]
+  before_action :move_to_root_path, only:[:index, :create]
 
   def index
     @buy_address = BuyAddress.new
@@ -33,6 +35,13 @@ class BuysController < ApplicationController
       card: buy_params[:token],
       currency: 'jpy'
     )
-end
+  end
+
+  def move_to_root_path
+    # unless　ログインユーザーのID　＝＝　出品した商品に紐づいているユーザーID
+    if current_user.id == @item.user_id || @item.buy != nil
+      redirect_to root_path
+    end
+  end
 
 end
