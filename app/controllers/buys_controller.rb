@@ -38,7 +38,6 @@ class BuysController < ApplicationController
   end
 
   def move_to_root_path
-    # unless　ログインユーザーのID　＝＝　出品した商品に紐づいているユーザーID
     if current_user.id == @item.user_id || @item.buy != nil
       redirect_to root_path
     end

@@ -7,7 +7,7 @@ class BuyAddress
     validates :ship_area_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :address_city
     validates :address_no
-    validates :tele_number, length: {maximum: 11}
+    validates :tele_number, length: {maximum: 11}, format: {with: /\A[0-9]{11}\z/}
     validates :item_id
     validates :user_id
     validates :token

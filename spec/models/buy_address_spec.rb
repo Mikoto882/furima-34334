@@ -82,6 +82,11 @@ RSpec.describe BuyAddress, type: :model do
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Tele number is too long (maximum is 11 characters)")
       end
+      it 'tele_numberは英数字混合の場合は保存できない' do
+        @buy_address.tele_number = '0901234abcd'
+        @buy_address.valid?
+        expect(@buy_address.errors.full_messages).to include("Tele number is invalid")
+      end
       it 'itemが紐付いていないと保存できない' do
         @buy_address.item_id = nil
         @buy_address.valid?
