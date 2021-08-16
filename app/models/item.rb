@@ -10,7 +10,7 @@ class Item < ApplicationRecord
       validates :ship_day_id
       validates :category_id
     end
-    validates :money, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 10000000, message: 'is invalid'}
+    validates :money, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: 'is invalid'}
   end
 
   belongs_to :user

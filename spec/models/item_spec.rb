@@ -121,7 +121,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Money is invalid")
       end
       it "販売価格は10,000,000以上では登録できないこと" do
-        @item.money = 10000001
+        @item.money = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Money is invalid")
       end
